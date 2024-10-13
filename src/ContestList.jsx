@@ -19,7 +19,8 @@ const ContestList = () => {
 
   const fetchContests = async () => {
     const res = await axios.get('https://codeforces.com/api/contest.list');
-    const filteredContests = res.data.result.filter(contest => contest.name.includes('Div. 2'));
+    const filteredContests = res.data.result.filter(contest => contest.name.includes('Div. 2') && contest.phase === 'FINISHED');
+    filteredContests = 
     setContests(filteredContests.slice(0, 100)); // Limit to 100 contests
   };
 
